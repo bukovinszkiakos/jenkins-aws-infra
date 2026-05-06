@@ -45,3 +45,15 @@ variable "scan_on_push" {
 variable "image_tag_mutability" {
   type = string
 }
+
+variable "iam_role_name" {
+  type = string
+}
+
+variable "iam_instance_profile_name" {
+  type = string
+}
+
+variable "ecr_readonly_policy_arn" {
+  type = string
+}

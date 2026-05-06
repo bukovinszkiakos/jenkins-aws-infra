@@ -36,5 +36,15 @@ module "app_ec2" {
   security_group_id = module.security_group.security_group_id
   key_name          = var.key_name
 
+  iam_instance_profile = module.iam.instance_profile_name
+
   user_data = file("${path.module}/user_data/app.sh")
+}
+
+module "iam" {
+  source = "./modules/iam"
+
+  role_name             = var.iam_role_name
+  instance_profile_name = var.iam_instance_profile_name
+  policy_arn            = var.ecr_readonly_policy_arn
 }
