@@ -16,7 +16,6 @@ USER root
 RUN apt update && \
     apt install -y docker.io awscli
 
-USER jenkins
 EOF
 
 cd /jenkins
