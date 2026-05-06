@@ -5,7 +5,7 @@
 crash.log
 
 # Terraform variables
-*.tfvars
+#*.tfvars
 
 # Sensitive files
 *.pem
