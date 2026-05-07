@@ -24,6 +24,8 @@ module "jenkins_ec2" {
   security_group_id = module.security_group.security_group_id
   key_name          = var.key_name
 
+  availability_zone = "eu-central-1a"
+
   user_data = file("${path.module}/user_data/jenkins.sh")
 }
 
