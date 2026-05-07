@@ -5,5 +5,7 @@ resource "aws_ecr_repository" "this" {
     scan_on_push = var.scan_on_push
   }
 
+  force_delete = true
+  
   image_tag_mutability = var.image_tag_mutability
 }
