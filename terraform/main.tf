@@ -82,6 +82,7 @@ resource "aws_eip" "app_ip" {
   }
 }
 
+
 resource "aws_eip_association" "app_ip_assoc" {
   instance_id   = module.app_ec2.instance_id
 
