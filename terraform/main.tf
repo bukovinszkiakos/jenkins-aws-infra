@@ -60,6 +60,7 @@ module "jenkins_ebs" {
 
 
 
+
 resource "aws_volume_attachment" "jenkins_data" {
   device_name = "/dev/sdf"
 
