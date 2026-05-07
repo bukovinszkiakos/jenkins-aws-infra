@@ -50,20 +50,20 @@ module "iam" {
 }
 
 
-module "jenkins_ebs" {
-  source = "./modules/ebs"
+##module "jenkins_ebs" {
+##  source = "./modules/ebs"
 
-  availability_zone = module.jenkins_ec2.availability_zone
-  size              = 10
-  name              = "jenkins-data"
-}
+##  availability_zone = module.jenkins_ec2.availability_zone
+##  size              = 10
+##  name              = "jenkins-data"
+##}
 
 
 
 resource "aws_volume_attachment" "jenkins_data" {
   device_name = "/dev/sdf"
 
-  volume_id   = module.jenkins_ebs.volume_id
+  volume_id   = "vol-0968a680192e98171"
 
   instance_id = module.jenkins_ec2.instance_id
 }
