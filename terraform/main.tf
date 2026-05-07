@@ -70,21 +70,13 @@ resource "aws_volume_attachment" "jenkins_data" {
 }
 
 
-resource "aws_eip" "app_ip" {
-  domain = "vpc"
-
-  tags = {
-    Name = "akos-app-eip"
-  }
-
-   lifecycle {
-    prevent_destroy = true
-  }
+data "aws_eip" "existing_app_ip" {
+  public_ip = "3.74.64.15"
 }
 
 
 resource "aws_eip_association" "app_ip_assoc" {
   instance_id   = module.app_ec2.instance_id
 
-  allocation_id = aws_eip.app_ip.id
+  allocation_id = data.aws_eip.existing_app_ip.id
 }
