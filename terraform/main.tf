@@ -70,6 +70,7 @@ resource "aws_volume_attachment" "jenkins_data" {
 }
 
 
+
 data "aws_eip" "existing_app_ip" {
   public_ip = "3.74.64.15"
 }
