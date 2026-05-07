@@ -53,7 +53,7 @@ module "iam" {
 module "jenkins_ebs" {
   source = "./modules/ebs"
 
-  availability_zone = "eu-central-1a"
+  availability_zone = module.jenkins_ec2.availability_zone
   size              = 10
   name              = "jenkins-data"
 }
