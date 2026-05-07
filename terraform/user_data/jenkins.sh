@@ -8,7 +8,9 @@ systemctl enable docker
 
 sleep 20
 
-mkfs -t ext4 /dev/nvme1n1 || true
+if ! blkid /dev/nvme1n1; then
+  mkfs -t ext4 /dev/nvme1n1
+fi
 
 mkdir -p /jenkins-data
 

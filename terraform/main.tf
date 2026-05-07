@@ -76,6 +76,10 @@ resource "aws_eip" "app_ip" {
   tags = {
     Name = "akos-app-eip"
   }
+
+   lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_eip_association" "app_ip_assoc" {
