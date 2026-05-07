@@ -66,3 +66,18 @@ resource "aws_volume_attachment" "jenkins_data" {
 
   instance_id = module.jenkins_ec2.instance_id
 }
+
+
+resource "aws_eip" "app_ip" {
+  domain = "vpc"
+
+  tags = {
+    Name = "akos-app-eip"
+  }
+}
+
+resource "aws_eip_association" "app_ip_assoc" {
+  instance_id   = module.app_ec2.instance_id
+
+  allocation_id = aws_eip.app_ip.id
+}
