@@ -48,3 +48,21 @@ module "iam" {
   instance_profile_name = var.iam_instance_profile_name
   policy_arn            = var.ecr_readonly_policy_arn
 }
+
+
+module "jenkins_ebs" {
+  source = "./modules/ebs"
+
+  availability_zone = "eu-central-1a"
+  size              = 10
+  name              = "jenkins-data"
+}
+
+
+resource "aws_volume_attachment" "jenkins_data" {
+  device_name = "/dev/sdf"
+
+  volume_id   = module.jenkins_ebs.volume_id
+
+  instance_id = module.jenkins_ec2.instance_id
+}

@@ -6,6 +6,14 @@ apt install docker.io -y
 systemctl start docker
 systemctl enable docker
 
+sleep 20
+
+mkfs -t ext4 /dev/nvme1n1 || true
+
+mkdir -p /jenkins-data
+
+mount /dev/nvme1n1 /jenkins-data
+
 mkdir /jenkins
 
 cat <<EOF > /jenkins/JenkinsDockerfile
@@ -28,4 +36,5 @@ docker run -d \
   -p 8080:8080 \
   -p 50000:50000 \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /jenkins-data:/var/jenkins_home \
   custom-jenkins
