@@ -18,7 +18,6 @@ module "security_group" {
 
 
 
-
 module "jenkins_ec2" {
   source = "./modules/ec2"
 
